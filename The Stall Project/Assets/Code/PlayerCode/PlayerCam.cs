@@ -9,9 +9,6 @@ public class PlayerCam : MonoBehaviour
     public float SensX;
     public float SensY;
 
-    [Header("Transforms")]
-    public Transform PlayerBody;
-
     float xRotation;
     float yRotation;
 
