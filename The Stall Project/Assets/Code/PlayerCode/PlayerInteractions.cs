@@ -24,7 +24,7 @@ public class PlayerInteractions : MonoBehaviour
                                   //example below 
                                   //MouseLookScript mouseLookScript;
 
-    public Inventory InventoryRef;
+    public InventoryManager InventoryRef;
     void Start()
     {
        // LayerNumber = LayerMask.NameToLayer("holdLayer"); //if your holdLayer is named differently make sure to change this ""

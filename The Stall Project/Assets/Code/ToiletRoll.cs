@@ -5,7 +5,7 @@ using interfaces;
 
 public class ToiletRoll : MonoBehaviour, Interact
 {
-    public Inventory InventoryRef;
+    public InventoryManager InventoryRef;
     public void PickUp()
     {
         InventoryRef.PlayerInventory.Add(transform.gameObject);
