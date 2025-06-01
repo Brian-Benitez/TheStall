@@ -6,17 +6,15 @@ public class Inventory : MonoBehaviour
 {
     [Header("Players List")]
     public List<GameObject> PlayerInventory;
+    public int InventoryIndex = 0;
 
-    public void ScollUpInventory()
+    public void ChangeItemVisually()
     {
         if(PlayerInventory.Count == 0)
             return;
         else
         {
-            Rigidbody rb = PlayerInventory[0].GetComponent<Rigidbody>();
-            rb.useGravity = false;
-            PlayerInventory[0].gameObject.SetActive(true);
-
+            PlayerInventory[InventoryIndex].gameObject.SetActive(true);
         }
             
     }

@@ -1,6 +1,7 @@
 using interfaces;
 using System.Collections;
 using System.Collections.Generic;
+using System.Linq;
 using Unity.Burst.CompilerServices;
 using UnityEngine;
 
@@ -61,12 +62,12 @@ public class PlayerInteractions : MonoBehaviour
                 if (InventoryRef.PlayerInventory == null)
                     Debug.Log("Player does not have anything");
                 //make sure pickup tag is attached 
-                else if (InventoryRef.PlayerInventory[0].transform.gameObject.tag == "canPickUp")
+                else if (InventoryRef.PlayerInventory[InventoryRef.InventoryIndex].transform.gameObject.tag == "canPickUp")
                 {
                     _hasObjectInHand = true;
-                    InventoryRef.PlayerInventory[0].SetActive(true);
+                    InventoryRef.PlayerInventory[InventoryRef.InventoryIndex].SetActive(true);
                     //pass in object hit into the PickUpObject function
-                    PickUpObject(InventoryRef.PlayerInventory[0].transform.gameObject);
+                    PickUpObject(InventoryRef.PlayerInventory[InventoryRef.InventoryIndex].transform.gameObject);
                     Debug.Log("pick up obecjt");
                 }
 
@@ -88,6 +89,14 @@ public class PlayerInteractions : MonoBehaviour
                 _hasObjectInHand = false;
                 StopClipping();
                 ThrowObject();
+
+                string nameOfObjectThrown = InventoryRef.PlayerInventory[InventoryRef.InventoryIndex].gameObject.name;
+                foreach (GameObject gameobject in InventoryRef.PlayerInventory.Reverse<GameObject>())
+                {
+                    Debug.Log("ahhhhhhhhh");
+                    if(gameobject.name == nameOfObjectThrown)
+                        InventoryRef.PlayerInventory.Remove(gameobject);
+                }
             }
 
         }
